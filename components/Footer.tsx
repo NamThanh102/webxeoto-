@@ -58,7 +58,7 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0 text-primary" />
-                <span>Tây Đô, Cần Thơ, Việt Nam</span>
+                <span>883 Đ. Quang Trung, Phú Lương, Hà Nội, 100000, Vietnam</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-6 text-center text-sm">
-          <p>&copy; 2024 Ô Tô Tây Đô. All rights reserved.</p>
+          <p>&copy; 2026 Ô Tô Tây Đô - Trọng Hoàng Xe Tải</p>
         </div>
       </div>
     </footer>

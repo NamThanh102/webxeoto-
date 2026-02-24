@@ -13,28 +13,28 @@ const trucks = [
     id: 2,
     name: 'XE TẢI TERACO TERA 250 TRỌ TRUNG VIAL VIOS',
     price: 'Liên Hệ',
-    image: 'https://images.unsplash.com/photo-1586768488954-0ef5a6a36b2c?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: null
   },
   {
     id: 3,
     name: 'XE TẢI TERA 100 - 990KG - TÀI XỞ LẬN 1 LẤY ĐT LỚN HƠN 1.5 TẤN',
     price: 'Liên Hệ',
-    image: 'https://images.unsplash.com/photo-1601584117486-e5278d0e6757?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERACO 5 TẤN PHANH'
   },
   {
     id: 4,
     name: 'XE TẢI TERA 250 - TERA 125 - NHỎ TRUNG NO LỆCH',
     price: 'Liên Hệ',
-    image: 'https://images.unsplash.com/photo-1511994477422-b69e44bd4ea9?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: null
   },
   {
     id: 5,
     name: 'XE TẢI TERACO TERA 245N PHAS/TERA 245N/TERA',
     price: 'Liên Hệ',
-    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERA GIẢM GIÁ 2.0 TỶ'
   },
   {
