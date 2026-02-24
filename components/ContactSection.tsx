@@ -159,15 +159,15 @@ export default function ContactSection() {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-bold text-gray-800 mb-2">Hotline</h3>
-              <p className="text-primary font-semibold">0983 99 55 96</p>
+              <p className="text-primary font-semibold">084 562 2000</p>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-6 text-center">
               <div className="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-3">
                 <MessageSquare className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-bold text-gray-800 mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">autotaydohn@gmail.com</p>
+              <h3 className="font-bold text-gray-800 mb-2">ZaLo</h3>
+              <p className="text-primary font-semibold">0845.62.2000</p>
             </div>
 
             <div className="bg-white rounded-xl shadow-md p-6 text-center">
@@ -177,7 +177,7 @@ export default function ContactSection() {
                 </svg>
               </div>
               <h3 className="font-bold text-gray-800 mb-2">Địa chỉ</h3>
-              <p className="text-gray-600 text-sm">Tây Đô, Cần Thơ</p>
+              <p className="text-gray-600 text-sm">883 Đ.Quang Trung, Phú Lương, Hà Nội</p>
             </div>
           </div>
         </div>

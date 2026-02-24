@@ -19,10 +19,10 @@ export default function Footer() {
               Đại lý xe tải uy tín hàng đầu tại khu vực miền Tây, chuyên cung cấp các dòng xe tải chất lượng cao.
             </p>
             <div className="flex gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61581384503760" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
                 <Facebook className="w-4 h-4 text-white" />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
+              <a href="https://www.youtube.com/@tronghoangxetai" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">
                 <Youtube className="w-4 h-4 text-white" />
               </a>
             </div>
@@ -62,7 +62,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 flex-shrink-0 text-primary" />
-                <a href="tel:0983995596" className="hover:text-primary transition-colors">0983 99 55 96</a>
+                <a href="tel:0845622000" className="hover:text-primary transition-colors">084 562 2000</a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4 flex-shrink-0 text-primary" />

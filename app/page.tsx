@@ -5,6 +5,7 @@ import NewsSection from '@/components/NewsSection'
 import ContactSection from '@/components/ContactSection'
 import FloatingActions from '@/components/FloatingActions'
 import Footer from '@/components/Footer'
+import ContactModal from '@/components/ContactModal'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ContactSection />
       <Footer />
       <FloatingActions />
+      <ContactModal />
     </main>
   )
 }

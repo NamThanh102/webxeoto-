@@ -116,11 +116,11 @@ export default function HeroSection() {
               </div>
             </div>
             <a
-              href="tel:0983995596"
+              href="tel:084 562 2000"
               className="flex items-center gap-3 bg-white text-primary px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-lg md:text-2xl hover:bg-gray-100 transition-colors shadow-lg"
             >
               <Phone className="w-6 h-6 md:w-8 md:h-8" />
-              <span>0983 99 55 96</span>
+              <span>084 562 2000</span>
             </a>
           </div>
         </div>

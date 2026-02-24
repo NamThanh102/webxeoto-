@@ -5,7 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin', 'vietnamese'] })
 
 export const metadata: Metadata = {
-  title: 'Ô Tô Tây Đô - Đại lý xe tải uy tín',
+  title: 'Trọng Hoàng Xe Tải - Uy Tín - Trách Nhiệm',
   description: 'Chuyên cung cấp các dòng xe tải chất lượng cao với giá cả cạnh tranh',
 }
 
@@ -15,8 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="vi">
-      <body className={inter.className}>{children}</body>
+    <html lang="vi" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }

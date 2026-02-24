@@ -5,56 +5,56 @@ const trucks = [
   {
     id: 1,
     name: 'XE TẢI TERA 100 - 990KG - TẶNG 5 TRIỆU',
-    price: '245.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERA GIẢM GIÁ 2.8 TỶ'
   },
   {
     id: 2,
     name: 'XE TẢI TERACO TERA 250 TRỌ TRUNG VIAL VIOS',
-    price: '245.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1586768488954-0ef5a6a36b2c?w=600&h=400&fit=crop',
     badge: null
   },
   {
     id: 3,
     name: 'XE TẢI TERA 100 - 990KG - TÀI XỞ LẬN 1 LẤY ĐT LỚN HƠN 1.5 TẤN',
-    price: '275.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1601584117486-e5278d0e6757?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERACO 5 TẤN PHANH'
   },
   {
     id: 4,
     name: 'XE TẢI TERA 250 - TERA 125 - NHỎ TRUNG NO LỆCH',
-    price: '345.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1511994477422-b69e44bd4ea9?w=600&h=400&fit=crop',
     badge: null
   },
   {
     id: 5,
     name: 'XE TẢI TERACO TERA 245N PHAS/TERA 245N/TERA',
-    price: '210.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERA GIẢM GIÁ 2.0 TỶ'
   },
   {
     id: 6,
     name: 'TERA V2 GIẢM - XE TẢI VAN TERA 2 CHỖ VÀ 4 GIỜ NGƯNG',
-    price: '291.500.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
     badge: null
   },
   {
     id: 7,
     name: 'XE TẢI TERA V2 GIẢM - XE TẢI TERA 2 CHỖ - TERA 2 CHỖ',
-    price: '229.000.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1586768488954-0ef5a6a36b2c?w=600&h=400&fit=crop',
     badge: 'XE TẢI TERA VAN 800 KG ĐỦ LỖ XÁM'
   },
   {
     id: 8,
     name: 'TERA V2 - XE TẢI VAN TERA 2 CHỖ VÀ 6 GIỜ NGƯNG',
-    price: '291.500.000',
+    price: 'Liên Hệ',
     image: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop',
     badge: null
   },
@@ -97,7 +97,7 @@ export default function FeaturedProducts() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1 text-primary font-bold text-lg">
                     <Tag className="w-4 h-4" />
-                    <span>Giá: {parseInt(truck.price).toLocaleString('vi-VN')}đ</span>
+                    <span>Giá: {truck.price}</span>
                   </div>
                 </div>
                 <button className="mt-4 w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors">

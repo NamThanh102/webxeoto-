@@ -8,12 +8,9 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const menuItems = [
-    { label: 'TIN TỨC', href: '#tin-tuc' },
-    { label: 'TIỆN ÍCH CHO LÁI XE', href: '#tien-ich' },
     { label: 'GIỚI THIỆU', href: '#gioi-thieu' },
+    { label: 'TIN TỨC', href: '#tin-tuc' },
     { label: 'SẢN PHẨM', href: '#san-pham' },
-    { label: 'HỆ THỐNG CHI NHÁNH', href: '#chi-nhanh' },
-    { label: 'BẢO HÀNH', href: '#bao-hanh' },
     { label: 'LIÊN HỆ', href: '#lien-he' },
   ]
 
@@ -26,7 +23,7 @@ export default function Header() {
             <div className="flex items-center gap-3 md:gap-6">
               <div className="flex items-center gap-1 md:gap-2 text-gray-700">
                 <Phone className="w-3 h-3 md:w-4 md:h-4" />
-                <span className="whitespace-nowrap">Hotline: <a href="tel:0983995596" className="hover:text-primary font-semibold">0983995596</a></span>
+                <span className="whitespace-nowrap">Hotline: <a href="tel:084 562 2000" className="hover:text-primary font-semibold">084 562 2000</a></span>
               </div>
               <div className="hidden md:flex items-center gap-2 text-gray-700">
                 <Mail className="w-4 h-4" />
@@ -34,10 +31,10 @@ export default function Header() {
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
+              <a href="https://www.facebook.com/profile.php?id=61581384503760" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">
+              <a href="https://www.youtube.com/@tronghoangxetai" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>
