@@ -1,7 +1,38 @@
 import Image from 'next/image'
 import { Tag } from 'lucide-react'
+import Link from 'next/link'
+import { client, urlFor } from '@/lib/sanity.client'
 
-const trucks = [
+interface Product {
+  _id: string
+  name: string
+  slug: { current: string }
+  price: string
+  image: any
+  badge?: string
+}
+
+async function getFeaturedProducts(): Promise<Product[]> {
+  const query = `*[_type == "product" && featured == true && published == true] | order(order asc)[0...8]{
+    _id,
+    name,
+    slug,
+    price,
+    image,
+    badge
+  }`
+  
+  try {
+    const products = await client.fetch(query)
+    return products
+  } catch (error) {
+    console.error('Error fetching products:', error)
+    return []
+  }
+}
+
+// Fallback data for when Sanity is not configured yet
+const fallbackTrucks = [
   {
     id: 1,
     name: 'XE TẢI TERA 100 - 990KG - TẶNG 5 TRIỆU',
@@ -60,7 +91,14 @@ const trucks = [
   },
 ]
 
-export default function FeaturedProducts() {
+export default async function FeaturedProducts() {
+  // Try to fetch products from Sanity
+  const sanityProducts = await getFeaturedProducts()
+  
+  // Use Sanity products if available, otherwise use fallback data
+  const hasProducts = sanityProducts.length > 0
+  const productsToDisplay = hasProducts ? sanityProducts : []
+  
   return (
     <section id="san-pham" className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -71,47 +109,69 @@ export default function FeaturedProducts() {
           <div className="w-24 h-1 bg-primary mx-auto"></div>
         </div>
 
+        {!hasProducts && (
+          <div className="text-center mb-8 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+            <p className="text-yellow-800">
+              Chưa có sản phẩm nào. Vui lòng truy cập{' '}
+              <a href="/admin" className="text-primary font-semibold underline">
+                trang quản trị
+              </a>{' '}
+              để thêm sản phẩm.
+            </p>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {trucks.map((truck) => (
-            <div
-              key={truck.id}
-              className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group"
-            >
-              <div className="relative h-64 overflow-hidden">
-                {truck.badge && (
-                  <div className="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
-                    {truck.badge}
-                  </div>
-                )}
-                <Image
-                  src={truck.image}
-                  alt={truck.name}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-sm font-semibold text-gray-800 mb-3 line-clamp-2 min-h-[40px]">
-                  {truck.name}
-                </h3>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 text-primary font-bold text-lg">
-                    <Tag className="w-4 h-4" />
-                    <span>Giá: {truck.price}</span>
-                  </div>
+          {productsToDisplay.map((product) => {
+            const imageUrl = product.image
+              ? urlFor(product.image).width(600).height(400).url()
+              : '/truck-placeholder.jpg'
+            
+            return (
+              <Link
+                key={product._id}
+                href={`/san-pham/${product.slug.current}`}
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 group"
+              >
+                <div className="relative h-64 overflow-hidden">
+                  {product.badge && (
+                    <div className="absolute top-3 left-3 bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold z-10">
+                      {product.badge}
+                    </div>
+                  )}
+                  <Image
+                    src={imageUrl}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
                 </div>
-                <button className="mt-4 w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors">
-                  Xem chi tiết
-                </button>
-              </div>
-            </div>
-          ))}
+                <div className="p-4">
+                  <h3 className="text-sm font-semibold text-gray-800 mb-3 line-clamp-2 min-h-[40px]">
+                    {product.name}
+                  </h3>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1 text-primary font-bold text-lg">
+                      <Tag className="w-4 h-4" />
+                      <span>Giá: {product.price}</span>
+                    </div>
+                  </div>
+                  <button className="mt-4 w-full bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+                    Xem chi tiết
+                  </button>
+                </div>
+              </Link>
+            )
+          })}
         </div>
 
         <div className="text-center mt-10">
-          <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-full border-2 border-gray-300 transition-colors">
+          <Link
+            href="/san-pham"
+            className="inline-block bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-8 rounded-full border-2 border-gray-300 transition-colors"
+          >
             Xem tất cả sản phẩm
-          </button>
+          </Link>
         </div>
       </div>
     </section>
