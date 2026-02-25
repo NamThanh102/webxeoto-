@@ -4,6 +4,8 @@ import { notFound } from 'next/navigation'
 import { Phone, Mail, MessageCircle } from 'lucide-react'
 import { PortableText } from '@portabletext/react'
 
+export const revalidate = 60
+
 interface Product {
   _id: string
   name: string

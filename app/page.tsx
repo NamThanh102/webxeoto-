@@ -7,6 +7,8 @@ import FloatingActions from '@/components/FloatingActions'
 import Footer from '@/components/Footer'
 import ContactModal from '@/components/ContactModal'
 
+export const revalidate = 60
+
 export default function Home() {
   return (
     <main className="min-h-screen">

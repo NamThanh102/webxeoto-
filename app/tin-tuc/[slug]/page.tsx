@@ -5,6 +5,8 @@ import { notFound } from 'next/navigation'
 import { Calendar, ArrowLeft } from 'lucide-react'
 import { PortableText } from '@portabletext/react'
 
+export const revalidate = 60
+
 interface News {
   _id: string
   title: string

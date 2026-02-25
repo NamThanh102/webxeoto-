@@ -36,6 +36,8 @@ export const metadata = {
   description: 'Tin tức và sự kiện mới nhất từ Trọng Hoàng Xe Tải',
 }
 
+export const revalidate = 60 // Revalidate every 60 seconds
+
 export default async function NewsListPage() {
   const news = await getAllNews()
 
