@@ -1,35 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, ArrowLeft } from 'lucide-react'
-import { client, urlFor } from '@/lib/sanity.client'
-
-interface News {
-  _id: string
-  title: string
-  slug: { current: string }
-  excerpt: string
-  image: any
-  publishedAt: string
-}
-
-async function getAllNews(): Promise<News[]> {
-  const query = `*[_type == "news"] | order(publishedAt desc){
-    _id,
-    title,
-    slug,
-    excerpt,
-    image,
-    publishedAt
-  }`
-  
-  try {
-    const news = await client.fetch(query)
-    return news
-  } catch (error) {
-    console.error('Error fetching news:', error)
-    return []
-  }
-}
+import { urlFor } from '@/lib/sanity.client'
+import { getAllNews } from '@/lib/sanity.queries'
 
 export const metadata = {
   title: 'Tin Tức - Trọng Hoàng Xe Tải',

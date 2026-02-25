@@ -1,4 +1,5 @@
-import { client, urlFor } from '@/lib/sanity.client'
+import { urlFor } from '@/lib/sanity.client'
+import { getNewsBySlug, getAllNewsSlugs } from '@/lib/sanity.queries'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -7,45 +8,16 @@ import { PortableText } from '@portabletext/react'
 
 export const revalidate = 60
 
-interface News {
-  _id: string
-  title: string
-  slug: { current: string }
-  excerpt: string
-  image: any
-  publishedAt: string
-  content: any[]
-}
-
-async function getNews(slug: string): Promise<News | null> {
-  const query = `*[_type == "news" && slug.current == $slug][0]{
-    _id,
-    title,
-    slug,
-    excerpt,
-    image,
-    publishedAt,
-    content
-  }`
-  
-  return await client.fetch(query, { slug })
-}
-
-async function getAllNewsSlugs() {
-  const query = `*[_type == "news"]{ "slug": slug.current }`
-  return await client.fetch(query)
-}
-
 export async function generateStaticParams() {
-  const news = await getAllNewsSlugs()
-  return news.map((article: { slug: string }) => ({
-    slug: article.slug,
+  const slugs = await getAllNewsSlugs()
+  return slugs.map((slug: string) => ({
+    slug,
   }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const article = await getNews(slug)
+  const article = await getNewsBySlug(slug)
   
   if (!article) {
     return {
@@ -61,7 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function NewsDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const article = await getNews(slug)
+  const article = await getNewsBySlug(slug)
 
   if (!article) {
     notFound()

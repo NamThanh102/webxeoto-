@@ -1,67 +1,8 @@
 import Image from 'next/image'
 import { Calendar, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { client, urlFor } from '@/lib/sanity.client'
-
-interface News {
-  _id: string
-  title: string
-  slug: { current: string }
-  excerpt: string
-  image: any
-  publishedAt: string
-}
-
-async function getFeaturedNews(): Promise<News[]> {
-  const query = `*[_type == "news" && featured == true && published == true] | order(publishedAt desc)[0...4]{
-    _id,
-    title,
-    slug,
-    excerpt,
-    image,
-    publishedAt
-  }`
-  
-  try {
-    const news = await client.fetch(query)
-    return news
-  } catch (error) {
-    console.error('Error fetching news:', error)
-    return []
-  }
-}
-
-// Fallback data for when Sanity is not configured yet
-const fallbackNews = [
-  {
-    id: 1,
-    title: 'DARSAN MOTORS CÙNG BẠN LỰA XE TỐ TÍNH GIÁ PHẦN XÁ CHÍ NHÁNH NHI ĐỒNG - BẾN LỨC',
-    excerpt: '100% Xe tốt - Đáp ứng nhu cầu vận chuyển hàng hóa hiệu quả với các dòng xe tải chất lượng cao từ Darsan Motors...',
-    image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop',
-    date: '2024-09-15',
-  },
-  {
-    id: 2,
-    title: 'DARSAN MOTORS LỬI BOI TRONG LÉ PHÍ PHƯỚC ĐẠI CẢNH GIỚI VÀ LÁM THÁC TỤNG TRONG QUY 09/2024',
-    excerpt: 'Sự kiện khai trương chi nhánh mới với nhiều ưu đãi hấp dẫn dành cho khách hàng trong tháng 9...',
-    image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600&h=400&fit=crop',
-    date: '2024-09-10',
-  },
-  {
-    id: 3,
-    title: 'QUAY QUÀ ẢNH NGỌC ĐỂ TERA HN - XE TẢI VĂN BẢO KÝ',
-    excerpt: 'Chương trình quay số may mắn với giải thưởng hấp dẫn khi mua xe tải trong tháng này...',
-    image: 'https://images.unsplash.com/photo-1586768488954-0ef5a6a36b2c?w=600&h=400&fit=crop',
-    date: '2024-08-28',
-  },
-  {
-    id: 4,
-    title: 'SỰ KIỆN TRUNG BẢN VÀ GIỚI THIỆU',
-    excerpt: 'Tìm hiểu về các dòng xe tải mới nhất và công nghệ tiên tiến được áp dụng trong sản xuất...',
-    image: 'https://images.unsplash.com/photo-1511994477422-b69e44bd4ea9?w=600&h=400&fit=crop',
-    date: '2024-08-20',
-  },
-]
+import { urlFor } from '@/lib/sanity.client'
+import { getFeaturedNews } from '@/lib/sanity.queries'
 
 export default async function NewsSection() {
   // Try to fetch news from Sanity

@@ -1,4 +1,5 @@
-import { client, urlFor } from '@/lib/sanity.client'
+import { urlFor } from '@/lib/sanity.client'
+import { getProductBySlug, getAllProductSlugs } from '@/lib/sanity.queries'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { Phone, Mail, MessageCircle } from 'lucide-react'
@@ -6,57 +7,16 @@ import { PortableText } from '@portabletext/react'
 
 export const revalidate = 60
 
-interface Product {
-  _id: string
-  name: string
-  slug: { current: string }
-  price: string
-  priceNumber?: number
-  image: any
-  images?: any[]
-  badge?: string
-  description?: any[]
-  specifications?: { label: string; value: string }[]
-  features?: string[]
-  category?: string
-  brand?: string
-}
-
-async function getProduct(slug: string): Promise<Product | null> {
-  const query = `*[_type == "product" && slug.current == $slug][0]{
-    _id,
-    name,
-    slug,
-    price,
-    priceNumber,
-    image,
-    images,
-    badge,
-    description,
-    specifications,
-    features,
-    category,
-    brand
-  }`
-  
-  return await client.fetch(query, { slug })
-}
-
-async function getAllProductSlugs() {
-  const query = `*[_type == "product"]{ "slug": slug.current }`
-  return await client.fetch(query)
-}
-
 export async function generateStaticParams() {
-  const products = await getAllProductSlugs()
-  return products.map((product: { slug: string }) => ({
-    slug: product.slug,
+  const slugs = await getAllProductSlugs()
+  return slugs.map((slug: string) => ({
+    slug,
   }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const product = await getProduct(slug)
+  const product = await getProductBySlug(slug)
   
   if (!product) {
     return {
@@ -72,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const product = await getProduct(slug)
+  const product = await getProductBySlug(slug)
 
   if (!product) {
     notFound()

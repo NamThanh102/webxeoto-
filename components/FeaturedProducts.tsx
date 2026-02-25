@@ -1,35 +1,8 @@
 import Image from 'next/image'
 import { Tag } from 'lucide-react'
 import Link from 'next/link'
-import { client, urlFor } from '@/lib/sanity.client'
-
-interface Product {
-  _id: string
-  name: string
-  slug: { current: string }
-  price: string
-  image: any
-  badge?: string
-}
-
-async function getFeaturedProducts(): Promise<Product[]> {
-  const query = `*[_type == "product" && featured == true && published == true] | order(order asc)[0...8]{
-    _id,
-    name,
-    slug,
-    price,
-    image,
-    badge
-  }`
-  
-  try {
-    const products = await client.fetch(query)
-    return products
-  } catch (error) {
-    console.error('Error fetching products:', error)
-    return []
-  }
-}
+import { urlFor } from '@/lib/sanity.client'
+import { getFeaturedProducts } from '@/lib/sanity.queries'
 
 // Fallback data for when Sanity is not configured yet
 const fallbackTrucks = [
